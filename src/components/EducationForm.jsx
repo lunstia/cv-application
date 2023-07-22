@@ -12,6 +12,10 @@ function Form({education, setEducationInfo}) {
         })
     }
 
+    function handleDelete(id) {
+        setEducationInfo((prev) => prev.filter((temp) => id !== temp.id));
+    }
+
     return (
         <form>
                 
@@ -21,7 +25,8 @@ function Form({education, setEducationInfo}) {
                 <input type='text' id='cvStartDate' placeholder='dd/mm/yyyy' value={education.startDate} onChange={(event) => handleChange(education.id, 'startDate', event.target.value)}/>
                 <input type='text' id='cvEndDate' placeholder='dd/mm/yyyy or Present' value={education.endDate} onChange={(event) => handleChange(education.id, 'endDate', event.target.value)}/>
             </div>
-        
+
+            <button type="button" onClick={() => handleDelete(education.id)}>Delete</button>
         </form>
     );
 }

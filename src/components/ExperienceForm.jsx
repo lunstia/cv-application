@@ -12,6 +12,10 @@ function Form({experience, setExperienceInfo}) {
         })
     }
 
+    function handleDelete(id) {
+        setExperienceInfo((prev) => prev.filter((temp) => id !== temp.id));
+    }
+
     return (
         <form>
             <input type='text' id='cvPosition' placeholder='Position Name' value={experience.position} onChange={(event) => handleChange(experience.id, 'position', event.target.value)}/>
@@ -21,6 +25,7 @@ function Form({experience, setExperienceInfo}) {
                 <input type='text' id='cvCompanyStartDate' placeholder='dd/mm/yyyy' value={experience.startDate} onChange={(event) => handleChange(experience.id, 'startDate', event.target.value)}/>
                 <input type='text' id='cvCompanyEndDate' placeholder='dd/mm/yyyy or Present'value={experience.endDate} onChange={(event) => handleChange(experience.id, 'endDate', event.target.value)}/>
             </div>
+            <button type="button" onClick={() => handleDelete(experience.id)}>Delete</button>
         </form>
     );
 }
@@ -31,8 +36,6 @@ export default function ExperienceForm({experienceInfo, setExperienceInfo}) {
     function handleClick() {
         setExperienceInfo((prev) => [...prev, {id: v4(),  name: '', position: '', description: '', startDate: '', endDate: ''}])
     }
-
-    
 
     return (
         <>
