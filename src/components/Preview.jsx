@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
+import '../styles/resume.css';
 
 
 export default function Preview({personalInfo, educationInfo, experienceInfo}) {
     return (
-        <div>
+        <div className="preview">
             <section>
                 <h1>{personalInfo.name}</h1>
                 <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
